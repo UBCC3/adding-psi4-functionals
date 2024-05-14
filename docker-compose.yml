@@ -1,0 +1,8 @@
+services:
+  snakemake_psi4:
+    attach: true
+    image: nathanpennie/psi4-docker-utils:snakemake-1.9.x
+    volumes:
+      - .:/home/ubuntu/work/
+    command: ["conda", "run", "--live-stream", "-n", "p4env", "snakemake", "-c2"]
+
