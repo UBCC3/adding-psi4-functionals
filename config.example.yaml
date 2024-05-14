@@ -1,0 +1,90 @@
+---
+# ------------------------- #
+# Input Files Customization #
+# ------------------------- #
+
+#input files template
+TEMPL1: qcengine.tmpl
+
+#Number of processors for parallel jobs
+PROC: 4
+
+# ------------------ #
+# Directory location #
+# ------------------ #
+
+#Directory containing the source databases to replicate
+DATABASES_DIR: Databases
+
+#Directory containing all xyz files (full or relative path)
+GEOMETRIES_DIR: Geometries
+
+#Where raw output energies are stored for a given DFT, basis, and method
+ENERGIES_DIR: Energies
+
+#Directory where the output file structures is created (full or relative path)
+OUTPUTS_DIR: Outputs
+
+# ------------------ #
+# Databases to Build #
+# ------------------ #
+
+# With each database, a list of DFTs to evaluate is provided
+DATABASES:
+  test_water:
+    dfts: ["B3LYP", "PBE0"]
+
+# ------------------- #
+# Calculation Methods #
+# ------------------- #
+
+# Calculation methods; Basis and spherical points
+METHODS:
+  def2-QZVPPD_99x590:
+    basis: def2-QZVPPD
+    reference: UHF
+    spherical_points: 590
+    radial_points: 99
+  def2-QZVPPD_500x974:
+    basis: def2-QZVPPD
+    reference: UHF
+    spherical_points: 974
+    radial_points: 500
+
+#Rules to set the method used by a particular dataset
+#Rules are evaluated in order. Once a rule is matched, evaluation stops. For a rule to match, the given attribute must
+#exactly match each field, or if an array is provided, one of the values in the array.
+#You can match based on the following:
+# - DATABASE - The database that is being built... I.e, the parent directory of the `IndValues.csv` file
+# - DATASET - The dataset within the database. I.e, everything before the last `_` in the datapoint name
+# - POINT - Individual datapoints
+RULES:
+  - match:
+      DATABASE: test_water
+    method: def2-QZVPPD_99x590
+  - match:
+      DATASET: ['AE18', 'RG10']
+      DATABASE: MGCDB84
+    method: def2-QZVPPD_500x974
+  - match:
+      DATABASE: MGCDB84
+    method: def2-QZVPPD_99x590
+
+# ---------------- #
+# Running the jobs #
+# ---------------- #
+
+#Call to the quantum chemistry program
+QCENGINE_CALL: "/home/ubuntu/build/build/stage/bin/psi4 -n {nproc} {input} {output}"   # Psi4
+          # "g16 {input} {output}"                 #Gaussian
+
+#regexp to extract final energies from output files
+REGEXP: '    Total Energy =\s*' # Psi4
+      # 'SCF Done:  E({method}) =  '                # Gaussian
+
+# Energy of 1 Hartree in your output unit. For Psi4, this is 1.0 since it outputs in Hartrees.
+# If your software outputs in eV, for example, this would be 27.211396641308 Hartrees/eV
+# Find this in the first ROW of https://ryutok.github.io/EnergyConversionTable/
+ENERGY_SCALE: 1.0
+
+...

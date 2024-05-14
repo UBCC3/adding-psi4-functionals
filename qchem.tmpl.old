@@ -1,3 +1,7 @@
+# WARNING!
+# This is a copy of the original template file from ACCDB. The options have changed, but I don't have a copy of
+# QChem to test my code, so I can't really edit this!
+
 $comment0
 $end
 

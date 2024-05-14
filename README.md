@@ -11,6 +11,8 @@
 ACCDB: A Collection of Chemistry DataBases
 ==========================================
 
+# TODO: I am still in the process of modifying ACCDB; I will provide an overview here later
+
 A collection of reliable, freely available, computational chemistry databases, and a set of tools for their manipulation and automation, released under GNU GPL license by Peverati's Theoretical and Computational Chemistry group at Florida Institute of Technology (TCC@FIT). ACCDB was created for the evaluation and parametrization of electronic structure theory methods (such as DFT and semi-empirical WFT methods), but it can be useful in many other areas of computational chemistry research (benchmarking, basis sets development and evaluation, data analysis, etc). **The total number of unique reference data points in ACCDB is 44,931** (all at a level of theory significantly higher than DFT), making it one of the largest collection of computed chemical energies at high-level accuracy.
 
 ## The current version of ACCDB is v1.0 and it includes the following databases:

@@ -1,2 +1,15 @@
+# Temp files
 .DS_Store
+.snakemake
+.~lock*
+psi.*.clean
+timer.dat
 
+# Output files
+Energies/
+Outputs/
+tolaunch/
+
+# User-specific files
+qcengine.tmpl
+config.yaml
