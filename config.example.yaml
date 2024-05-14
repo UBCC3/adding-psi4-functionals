@@ -75,7 +75,7 @@ RULES:
 # ---------------- #
 
 #Call to the quantum chemistry program
-QCENGINE_CALL: "/home/ubuntu/build/build/stage/bin/psi4 -n {nproc} {input} {output}"   # Psi4
+QCENGINE_CALL: "psi4 -n {nproc} {input} {output}"   # Psi4
           # "g16 {input} {output}"                 #Gaussian
 
 #regexp to extract final energies from output files
