@@ -1,0 +1,3 @@
+[submodule "psi4"]
+	path = psi4
+	url = git@github.com:UBCC3/psi4.git
