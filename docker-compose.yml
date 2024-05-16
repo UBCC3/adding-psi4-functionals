@@ -4,5 +4,7 @@ services:
     image: nathanpennie/psi4-docker-utils:snakemake-1.9.x
     volumes:
       - .:/home/ubuntu/work/
-    command: ["conda", "run", "--live-stream", "-n", "p4env", "snakemake", "-c2"]
+      - ./psi4/:/home/ubuntu/psi4/
+      - ./build/:/home/ubuntu/build/
+    command: ["./exec.sh"]
 
