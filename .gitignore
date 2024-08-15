@@ -13,3 +13,5 @@ tolaunch/
 # User-specific files
 qcengine.tmpl
 config.yaml
+
+build

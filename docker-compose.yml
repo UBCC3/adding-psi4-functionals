@@ -1,7 +1,7 @@
 services:
   snakemake_psi4:
     attach: true
-    image: nathanpennie/psi4-docker-utils:snakemake-1.9.x
+    image: ubchemica/psi4-docker-utils:snakemake-1.9.x
     volumes:
       - .:/home/ubuntu/work/
       - ./psi4/:/home/ubuntu/psi4/
